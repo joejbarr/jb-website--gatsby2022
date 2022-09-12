@@ -22,3 +22,9 @@
     margin: auto;
     width: 600px;
   }
+  .site-title {
+    font-size: 3rem;
+    color: rgb(55, 68, 50);
+    font-weight: 700;
+    margin: 0;
+  }
