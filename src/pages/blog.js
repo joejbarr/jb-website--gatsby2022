@@ -8,10 +8,12 @@ const BlogPage = ({ data }) => {
         <Layout pageTitle="joe's allotment">
             <ul>
                 {
-                data.allFile.nodes.map(node => (
-                    <li key={node.name}>
-                    {node.name}
-                    </li>
+                data.allMdx.nodes.map((node) => (
+                    <article key={node.id}>
+                    <h2>{node.frontmatter.title}</h2>
+                    <p>posted: {node.frontmatter.date}</p>
+                    <p>{node.excerpt}</p>
+                    </article>
                 ))
                 }
             </ul>
@@ -20,14 +22,20 @@ const BlogPage = ({ data }) => {
 }
 
 export const query = graphql`
-query {
-    allFile {
+  query {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
-        name
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
-}
+  }
 `
+
 
 export const Head = () => <Seo title="the allotment" />
 export default BlogPage

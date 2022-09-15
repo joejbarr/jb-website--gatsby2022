@@ -1,17 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `joe barr`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: "joe barr",
   },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: `allotment`,
-        path: `${__dirname}/blog`,
-      }
+        name: `blog`,
+        path: `${__dirname}/blog/`,
+      },
     },
+    "gatsby-plugin-mdx",
   ],
-}
+};
